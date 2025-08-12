@@ -1,85 +1,59 @@
-# Stormy Video - AI Video Generator Frontend
+# Stormy Video Frontend
 
-A modern React application for generating AI-powered promotional videos with a beautiful, responsive interface.
+React приложение для создания видео с липсинком, интегрированное с FastAPI бэкендом.
 
-## Features
+## Установка
 
-- 🎬 **AI Video Generation**: Create stunning promotional videos in seconds
-- 🎨 **Custom Branding**: Upload logos and customize brand colors
-- 📝 **Voice Scripts**: Add custom voice-over scripts
-- 🎥 **Screen Recording Support**: Upload app clips and screen recordings
-- ✨ **Beautiful UI**: Modern, responsive design with smooth animations
-- 🔄 **Real-time Progress**: Live generation progress tracking
-- 📱 **Mobile Responsive**: Works perfectly on all devices
-
-## Tech Stack
-
-- **React 18** with TypeScript
-- **Tailwind CSS** for styling
-- **Framer Motion** for animations
-- **Lucide React** for icons
-- **Radix UI** for accessible components
-- **Class Variance Authority** for component variants
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 16+ 
-- npm or yarn
-
-### Installation
-
-1. Install dependencies:
+1. Установите зависимости:
 ```bash
 npm install
 ```
 
-2. Start the development server:
+2. Убедитесь, что бэкенд запущен на порту 8000:
 ```bash
-npm run dev
+cd ../backend
+python demo_main.py
 ```
 
-3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+## Запуск
 
-### Available Scripts
+```bash
+npm start
+```
 
-- `npm start` - Start the development server
-- `npm run build` - Build for production
-- `npm test` - Run tests
-- `npm run eject` - Eject from Create React App
+Приложение будет доступно по адресу: http://localhost:3000
 
-## Project Structure
+## Функциональность
+
+- **Создание видео**: Введите сценарий и выберите тип видео (Durov или Tucker)
+- **Загрузка логотипа**: Опционально загрузите логотип для наложения на видео
+- **Real-time статус**: Отслеживание прогресса генерации видео
+- **Автоматическая обрезка**: Видео обрезается по длине аудио
+- **Позиционирование логотипа**: Логотип размещается на левой половине видео по центру
+
+## Интеграция с бэкендом
+
+Фронтенд автоматически подключается к бэкенду и отображает статус подключения. Если бэкенд недоступен, пользователь увидит соответствующее уведомление.
+
+## Структура проекта
 
 ```
 frontend/
-├── components/
-│   ├── ui/           # Reusable UI components
-│   ├── VideoGeneratorForm.tsx
-│   ├── GenerationLoader.tsx
-│   └── VideoResult.tsx
-├── styles/
-│   └── globals.css   # Global styles and Tailwind config
-├── public/           # Static assets
-├── App.tsx          # Main application component
-└── package.json     # Dependencies and scripts
+├── components/          # React компоненты
+│   ├── ui/             # UI компоненты (кнопки, инпуты и т.д.)
+│   └── VideoGenerator.tsx  # Основной компонент генератора
+├── config/             # Конфигурация API
+├── services/           # Сервисы для работы с API
+├── styles/             # CSS стили
+└── public/             # Статические файлы
 ```
 
-## Usage
+## Переменные окружения
 
-1. **Upload Assets**: Upload your logo and screen recording/app clip
-2. **Describe Product**: Enter a detailed description of your product or service
-3. **Customize**: Add voice scripts and choose brand colors
-4. **Generate**: Click generate and watch the AI create your video
-5. **Download**: Download your finished video or make edits
+Создайте файл `.env` в корне фронтенда:
 
-## Contributing
+```
+REACT_APP_API_URL=http://localhost:8000
+```
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-## License
-
-This project is licensed under the MIT License.
+По умолчанию используется `http://localhost:8000`.

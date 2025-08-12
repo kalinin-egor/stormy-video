@@ -62,19 +62,12 @@ class ApiService {
       try {
         const status = await this.checkVideoStatus(taskId);
         
-        console.log(`Video status for ${taskId}:`, status.status);
-        
         if (onProgress) {
           onProgress(status.status);
         }
 
         if (status.status === 'completed' || status.status === 'error') {
           return status;
-        }
-
-        // If status is still processing, call onProgress again to update UI
-        if (status.status === 'processing' && onProgress) {
-          onProgress(status.status);
         }
 
         // Wait 5 seconds before next check
